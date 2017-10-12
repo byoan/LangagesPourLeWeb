@@ -23,12 +23,12 @@ function handleClick(clickEvent) {
         type: 'GET',
         success: function (response) {
             let newPageContent = response;
-            $('title').text(newPageContent.pageTitle);
-            $('article').html(newPageContent.content);
+            document.title = newPageContent.pageTitle;
+            document.querySelector('article').innerHTML = newPageContent.content;
             assignListenersToLinks();
         },
-        error: function (response) {
-            alert('Une erreur s\'est produite lors de la récupération du contenu de la fiche demandée : ' + response);
+        error: function (error) {
+            alert('Une erreur s\'est produite lors de la récupération du contenu de la fiche demandée : ' + error);
         }
     });
 }
